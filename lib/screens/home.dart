@@ -1,3 +1,4 @@
+import 'package:body_ai_buddy/components/bottom_navbar.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -11,7 +12,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: MyB,
+      bottomNavigationBar: MyBottomNavigationBar(),
       backgroundColor: Colors.white,
       body: Padding(padding: const EdgeInsets.symmetric(horizontal: 5),
       child: Column(
