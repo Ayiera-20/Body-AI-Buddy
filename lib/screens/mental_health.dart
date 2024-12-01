@@ -1,4 +1,5 @@
 import 'package:body_ai_buddy/components/bottom_navbar.dart';
+import 'package:body_ai_buddy/screens/chat_mental.dart';
 import 'package:flutter/material.dart';
 
 class MentalHealth extends StatelessWidget {
@@ -23,7 +24,14 @@ class MentalHealth extends StatelessWidget {
         children: [
           Row(
             children: [
-              Card(
+              InkWell(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const ChatMental()
+                      )
+                    );
+                },
+                child: Card(
                 elevation: 10,
                 color: Color(0xFF86b7a4),
                 child: Padding(padding: EdgeInsets.only(right: 35, left: 35, top: 40, bottom: 40),
@@ -38,6 +46,8 @@ class MentalHealth extends StatelessWidget {
                   ],
                 )
                 )
+              ),
+
               ),
               SizedBox(width: 5,),
               Card(
