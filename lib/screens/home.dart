@@ -22,12 +22,13 @@ class _HomeState extends State<Home> {
             children: [
               const CircleAvatar(
                 radius: 40,
+                backgroundImage: AssetImage(''),
               ),
               const SizedBox(width: 5,),
               const Column(
                 children: [
-                  Text('Welcome'),
-                  SizedBox(height: 10,),
+                  Text('Hi'),
+                  SizedBox(height:5,),
                   Text('Users name'),
                 ],
               ),
@@ -119,12 +120,8 @@ class _HomeState extends State<Home> {
                 width: 200,
                 decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: const AssetImage("images/meal.png"),
-                  fit: BoxFit.cover,
-                  colorFilter: ColorFilter.mode(
-                    Colors.black.withOpacity(0.5),
-                    BlendMode.darken,
-                  ),
+                  image: const AssetImage("images/food.png"),
+                  fit: BoxFit.contain,
                 ),
                 borderRadius: BorderRadius.circular(7)
               ),
@@ -138,7 +135,7 @@ class _HomeState extends State<Home> {
                         style: TextStyle(fontSize: 20,
                       fontWeight: FontWeight.bold,
                       color: Colors.white),),),
-                        const SizedBox(height: 100,),
+                        const SizedBox(height: 110,),
                         Padding(padding: const EdgeInsets.symmetric(horizontal: 5),
                       child: ElevatedButton(
                     onPressed: () {
