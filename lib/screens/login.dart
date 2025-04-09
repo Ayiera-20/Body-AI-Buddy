@@ -83,14 +83,14 @@ class _LoginState extends State<Login> {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(50.0),
                       ),
-                      minimumSize: const Size(200, 70),
+                      minimumSize: const Size(200, 60),
                     ),
                     child: const Text('LOGIN', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18),),
                 ),
                 const SizedBox(height: 30),
                 const Text(
                   "Don't have an account?",
-                  style: TextStyle(color: Color(0xFF44544b)),
+                  style: TextStyle(color:Color(0xFF4d302a)),
                 ),
                 TextButton(
                   onPressed: () {
@@ -100,7 +100,7 @@ class _LoginState extends State<Login> {
                   },
                   child: const Text(
                     'Sign up Here',
-                    style: TextStyle(color: Color(0xFF4d302a)),
+                    style: TextStyle(color:Color(0xFF44544b)),
                   ),
                 ),
 

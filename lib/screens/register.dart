@@ -98,14 +98,14 @@ class _RegisterState extends State<Register> {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(50.0),
                       ),
-                      minimumSize: const Size(200, 70),
+                      minimumSize: const Size(200, 60),
                     ),
-                    child: const Text('create account', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18),),
+                    child: const Text('Create Account', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18),),
                 ),
                 const SizedBox(height: 30),
                 const Text(
                   "Already have an account?",
-                  style: TextStyle(color: Color(0xFF44544b)),
+                  style: TextStyle(color: Color(0xFF4d302a)),
                 ),
                 TextButton(
                   onPressed: () {
@@ -115,7 +115,7 @@ class _RegisterState extends State<Register> {
                   },
                   child: const Text(
                     'Log in Here',
-                    style: TextStyle(color: Color(0xFF4d302a)),
+                    style: TextStyle(color: Color(0xFF44544b)),
                   ),
                 ),
 
