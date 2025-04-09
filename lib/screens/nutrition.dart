@@ -25,19 +25,21 @@ class _NutritionState extends State<Nutrition> {
       body: Padding(padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Column(
         children: [
-          Text('Select your desired goal'),
+          SizedBox(height: 20,),
+          Text('Select your desired goal', style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 20 ),),
           SizedBox(height: 20,),
           Expanded(
             child: ListView(
             children: [
-              _buildCard('Boos Immunity'),
+              _buildCard('Boost Immunity'),
               _buildCard('Weight Mangement'),
               _buildCard('Improve digestive health'),
               _buildCard('Enhance Energy Levels'),
             ],
           )
           ),
-          // SizedBox(height: 30,),
           Text('Input your own peronalized goal',
           style: TextStyle(fontSize: 20,
           fontWeight: FontWeight.bold),
@@ -70,7 +72,7 @@ class _NutritionState extends State<Nutrition> {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(50.0),
                       ),
-                      minimumSize: const Size(200, 70),
+                      minimumSize: const Size(200, 60),
                     ),
                     child: const Text('Generate', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18),),
                 ),
