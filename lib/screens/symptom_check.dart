@@ -31,6 +31,7 @@ class _SymptomCheckState extends State<SymptomCheck> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        title: Text('Symptoms Checker'),
         backgroundColor: const Color(0xFFead2c6),
         leading: IconButton(onPressed: () {
           Navigator.pop(context);
@@ -42,12 +43,28 @@ class _SymptomCheckState extends State<SymptomCheck> {
       child: Padding(padding: const EdgeInsets.symmetric(horizontal: 30),
       child: Column(
         children: [
+          SizedBox(height: 20,),
+          Text("Let us know how you're feeling", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+          SizedBox(height: 4,),
+          Text('Describe your symptoms here', style: TextStyle(color: Colors.grey),),
+          SizedBox(height: 20,),
           DropdownButtonFormField<String>(
                   decoration: const InputDecoration(
                     labelText: 'Gender',
                     alignLabelWithHint: true,
                 contentPadding: EdgeInsets.only(left: 10),
-                                border: OutlineInputBorder(),
+                border: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey),
+                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                ),
+                focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Color(0xFF86b7a4), width: 2.0), 
+                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey, width: 2.0),
+                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                    ),         
                               ),
                   items: ['Male', 'Female', 'Other'].map((String value) {
                     return DropdownMenuItem<String>(
@@ -58,9 +75,11 @@ class _SymptomCheckState extends State<SymptomCheck> {
                   onChanged: (value) => gender = value,
                   validator: (value) => value == null ? 'Please select your gender' : null,
                 ),
+                const SizedBox(height: 20,),
           const SizedBox(height: 8,),const Text('Age',
           style: TextStyle(fontSize: 16,
-          fontWeight: FontWeight.bold
+          fontWeight: FontWeight.bold,
+          color: Color.fromARGB(255, 112, 107, 107),
           ),
           textAlign: TextAlign.left,),
           const SizedBox(height: 20,),
@@ -69,9 +88,9 @@ class _SymptomCheckState extends State<SymptomCheck> {
                     filled: false,
                     fillColor: Colors.transparent,
                     hintText: "Type here",
-                    hintStyle: TextStyle(fontWeight: FontWeight.bold,),
-                    border: const OutlineInputBorder(
-                      borderSide: BorderSide(color: Color(0xFF4d302a)),
+                    hintStyle: TextStyle(),
+                    border:  OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey),
                       borderRadius: BorderRadius.all(Radius.circular(10.0)),
                     ),
                     focusedBorder: OutlineInputBorder(
@@ -79,7 +98,7 @@ class _SymptomCheckState extends State<SymptomCheck> {
                       borderRadius: BorderRadius.all(Radius.circular(10.0)),
                     ),
                     enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Color(0xFF4d302a), width: 2.0),
+                      borderSide: BorderSide(color: Colors.grey, width: 2.0),
                       borderRadius: BorderRadius.all(Radius.circular(10.0)),
                     ),                   
                   ),
@@ -87,7 +106,8 @@ class _SymptomCheckState extends State<SymptomCheck> {
                 const SizedBox(height: 30,),
                 const Text('Date of birth',
                   style: TextStyle(fontSize: 16,
-                  fontWeight: FontWeight.bold
+                  fontWeight: FontWeight.bold,
+                  color: Color.fromARGB(255, 112, 107, 107),
                   ),
                   textAlign: TextAlign.left,),
                         const SizedBox(height: 20,),
@@ -96,7 +116,7 @@ class _SymptomCheckState extends State<SymptomCheck> {
                       
                       shape: RoundedRectangleBorder(
                         borderRadius:  BorderRadius.circular(10.0),
-                        side: const BorderSide(color: Color(0xFF4d302a))
+                        side: const BorderSide(color: Colors.grey)
                       ),
             child: Row(
                 children: [
@@ -122,18 +142,19 @@ class _SymptomCheckState extends State<SymptomCheck> {
               const SizedBox(height: 30,),
               const Text('Enter your symptoms, e.g., headache, fatigue, fever.',
               style: TextStyle(fontSize: 16,
-              fontWeight: FontWeight.bold
+              fontWeight: FontWeight.bold,
+              color: Color.fromARGB(255, 112, 107, 107)
               ),
-              textAlign: TextAlign.left,),
+              textAlign: TextAlign.center,),
               const SizedBox(height: 20,),
               TextFormField(
                       decoration: const InputDecoration(
                         filled: false,
                         fillColor: Colors.transparent,
                         hintText: "Type here",
-                        hintStyle: TextStyle(fontWeight: FontWeight.bold,),
-                        border: const OutlineInputBorder(
-                          borderSide: BorderSide(color: Color(0xFF4d302a)),
+                        hintStyle: TextStyle(),
+                        border:  OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.grey),
                           borderRadius: BorderRadius.all(Radius.circular(10.0)),
                         ),
                         focusedBorder: OutlineInputBorder(
@@ -141,26 +162,26 @@ class _SymptomCheckState extends State<SymptomCheck> {
                           borderRadius: BorderRadius.all(Radius.circular(10.0)),
                         ),
                         enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Color(0xFF4d302a), width: 2.0),
+                          borderSide: BorderSide(color: Colors.grey, width: 2.0),
                           borderRadius: BorderRadius.all(Radius.circular(10.0)),
                         ),                   
                       ),
                     ),
                     const SizedBox(height: 30,),
-                    const Text('How long have you been experencing these symptoms?.',
+                    const Text('How long have you been experencing these symptoms?',
                     style: TextStyle(fontSize: 16,
-                    fontWeight: FontWeight.bold
+                    fontWeight: FontWeight.bold,
+                    color: Color.fromARGB(255, 112, 107, 107),
                     ),
-                    textAlign: TextAlign.left,),
+                    textAlign: TextAlign.center,),
                     const SizedBox(height: 20,),
                     TextFormField(
                             decoration: const InputDecoration(
                               filled: false,
                               fillColor: Colors.transparent,
                               hintText: "Type here",
-                              hintStyle: TextStyle(fontWeight: FontWeight.bold,),
-                              border: const OutlineInputBorder(
-                                borderSide: BorderSide(color: Color(0xFF4d302a)),
+                              border: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.grey),
                                 borderRadius: BorderRadius.all(Radius.circular(10.0)),
                               ),
                               focusedBorder: OutlineInputBorder(
@@ -168,7 +189,7 @@ class _SymptomCheckState extends State<SymptomCheck> {
                                 borderRadius: BorderRadius.all(Radius.circular(10.0)),
                               ),
                               enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(color: Color(0xFF4d302a), width: 2.0),
+                                borderSide: BorderSide(color: Colors.grey, width: 2.0),
                                 borderRadius: BorderRadius.all(Radius.circular(10.0)),
                               ),                   
                             ),
@@ -176,18 +197,18 @@ class _SymptomCheckState extends State<SymptomCheck> {
                 const SizedBox(height: 30,),
                 const Text('List any current medications you are currently taking.',
                   style: TextStyle(fontSize: 16,
-                  fontWeight: FontWeight.bold
+                  fontWeight: FontWeight.bold,
+                  color: Color.fromARGB(255, 112, 107, 107),
                   ),
-                  textAlign: TextAlign.left,),
+                  textAlign: TextAlign.center,),
                   const SizedBox(height: 20,),
                   TextFormField(
                           decoration: const InputDecoration(
                             filled: false,
                             fillColor: Colors.transparent,
                             hintText: "Type here",
-                            hintStyle: TextStyle(fontWeight: FontWeight.bold,),
-                            border: const OutlineInputBorder(
-                              borderSide: BorderSide(color: Color(0xFF4d302a)),
+                            border:  OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.grey),
                               borderRadius: BorderRadius.all(Radius.circular(10.0)),
                             ),
                             focusedBorder: OutlineInputBorder(
@@ -195,7 +216,7 @@ class _SymptomCheckState extends State<SymptomCheck> {
                               borderRadius: BorderRadius.all(Radius.circular(10.0)),
                             ),
                             enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Color(0xFF4d302a), width: 2.0),
+                              borderSide: BorderSide(color: Colors.grey, width: 2.0),
                               borderRadius: BorderRadius.all(Radius.circular(10.0)),
                             ),                   
                           ),
@@ -203,18 +224,18 @@ class _SymptomCheckState extends State<SymptomCheck> {
                         const SizedBox(height: 30,),
                           const Text('Do you have any known allergies? If yes, please list them below.',
                             style: TextStyle(fontSize: 16,
-                            fontWeight: FontWeight.bold
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromARGB(255, 112, 107, 107),
                             ),
-                            textAlign: TextAlign.left,),
+                            textAlign: TextAlign.center,),
                             const SizedBox(height: 20,),
                             TextFormField(
                                     decoration: const InputDecoration(
                                       filled: false,
                                       fillColor: Colors.transparent,
                                       hintText: "Type here",
-                                      hintStyle: TextStyle(fontWeight: FontWeight.bold,),
-                                      border: const OutlineInputBorder(
-                                        borderSide: BorderSide(color: Color(0xFF4d302a)),
+                                      border: OutlineInputBorder(
+                                        borderSide: BorderSide(color: Colors.grey),
                                         borderRadius: BorderRadius.all(Radius.circular(10.0)),
                                       ),
                                       focusedBorder: OutlineInputBorder(
@@ -222,7 +243,7 @@ class _SymptomCheckState extends State<SymptomCheck> {
                                         borderRadius: BorderRadius.all(Radius.circular(10.0)),
                                       ),
                                       enabledBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(color: Color(0xFF4d302a), width: 2.0),
+                                        borderSide: BorderSide(color: Colors.grey, width: 2.0),
                                         borderRadius: BorderRadius.all(Radius.circular(10.0)),
                                       ),                   
                                     ),
@@ -230,18 +251,18 @@ class _SymptomCheckState extends State<SymptomCheck> {
                                   const SizedBox(height: 30,),
                           const Text('Are you currently taking any medications? If yes, please provide the details.',
                             style: TextStyle(fontSize: 16,
-                            fontWeight: FontWeight.bold
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromARGB(255, 112, 107, 107),
                             ),
-                            textAlign: TextAlign.left,),
+                            textAlign: TextAlign.center,),
                             const SizedBox(height: 20,),
                             TextFormField(
                                     decoration: const InputDecoration(
                                       filled: false,
                                       fillColor: Colors.transparent,
                                       hintText: "Type here",
-                                      hintStyle: TextStyle(fontWeight: FontWeight.bold,),
-                                      border: const OutlineInputBorder(
-                                        borderSide: BorderSide(color: Color(0xFF4d302a)),
+                                      border: OutlineInputBorder(
+                                        borderSide: BorderSide(color: Colors.grey),
                                         borderRadius: BorderRadius.all(Radius.circular(10.0)),
                                       ),
                                       focusedBorder: OutlineInputBorder(
@@ -249,24 +270,36 @@ class _SymptomCheckState extends State<SymptomCheck> {
                                         borderRadius: BorderRadius.all(Radius.circular(10.0)),
                                       ),
                                       enabledBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(color: Color(0xFF4d302a), width: 2.0),
+                                        borderSide: BorderSide(color: Colors.grey, width: 2.0),
                                         borderRadius: BorderRadius.all(Radius.circular(10.0)),
                                       ),                   
                                     ),
                                   ),
                                     const SizedBox(height: 30,),
                           const Text('Do you do any physical activity?',
-                          textAlign: TextAlign.left,
+                          textAlign: TextAlign.center,
                             style: TextStyle(fontSize: 16,
                             fontWeight: FontWeight.bold,
+                            color: Color.fromARGB(255, 112, 107, 107),
                             ),),
                             const SizedBox(height: 20,),
                             SingleChildScrollView( child: DropdownButtonFormField<String>(
                                     decoration: const InputDecoration(
+                                       border: OutlineInputBorder(
+                                      borderSide: BorderSide(color: Colors.grey),
+                                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                                ),
+                                      focusedBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(color: Color(0xFF86b7a4), width: 2.0), 
+                                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                                    ),
+                                      enabledBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(color: Colors.grey, width: 2.0),
+                                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                                    ),      
                                       hintText: 'Physical activity',
                                       alignLabelWithHint: true,
                                   contentPadding: EdgeInsets.only(left: 10),
-                                                  border: OutlineInputBorder(),
                                                 ),
                                     items: [
                                       'Sedentary (Little or no exercise)',
@@ -295,7 +328,7 @@ class _SymptomCheckState extends State<SymptomCheck> {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20.0),
                       ),
-                      minimumSize: const Size(300, 70),
+                      minimumSize: const Size(200, 50),
                     ),
                     child: const Text('Submit', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18),),
                 ),
