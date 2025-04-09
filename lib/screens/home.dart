@@ -14,10 +14,11 @@ class _HomeState extends State<Home> {
     return Scaffold(
       bottomNavigationBar: MyBottomNavigationBar(),
       backgroundColor: Colors.white,
-      body: Padding(padding: const EdgeInsets.symmetric(horizontal: 5),
+      body: Padding(padding: const EdgeInsets.symmetric(horizontal: 10),
+      child: SingleChildScrollView( 
       child: Column(
         children: [
-          const SizedBox(height:10),
+          const SizedBox(height:50),
           Row(
             children: [
               const CircleAvatar(
@@ -27,7 +28,7 @@ class _HomeState extends State<Home> {
               const SizedBox(width: 5,),
               const Column(
                 children: [
-                  Text('Hi'),
+                  Text('Hi', textAlign: TextAlign.left,),
                   SizedBox(height:5,),
                   Text('Users name'),
                 ],
@@ -233,6 +234,7 @@ class _HomeState extends State<Home> {
 
           
         ],
+      ),
       ),
       ),
 
