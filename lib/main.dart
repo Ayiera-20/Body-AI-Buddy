@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       title: 'Body AI  Buddy',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        // colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Color(0xFF86b7a4)),
         // useMaterial3: true,
       ),
       home: const SplashScreen(),
