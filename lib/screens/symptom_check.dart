@@ -31,7 +31,7 @@ class _SymptomCheckState extends State<SymptomCheck> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text('Symptoms Checker'),
+        title: const Text('Symptoms Checker'),
         backgroundColor: const Color(0xFFead2c6),
         leading: IconButton(onPressed: () {
           Navigator.pop(context);
@@ -43,11 +43,11 @@ class _SymptomCheckState extends State<SymptomCheck> {
       child: Padding(padding: const EdgeInsets.symmetric(horizontal: 30),
       child: Column(
         children: [
-          SizedBox(height: 20,),
-          Text("Let us know how you're feeling", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
-          SizedBox(height: 4,),
-          Text('Describe your symptoms here', style: TextStyle(color: Colors.grey),),
-          SizedBox(height: 20,),
+          const SizedBox(height: 20,),
+          const Text("Let us know how you're feeling", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+          const SizedBox(height: 4,),
+          const Text('Describe your symptoms here', style: TextStyle(color: Colors.grey),),
+          const SizedBox(height: 20,),
           DropdownButtonFormField<String>(
                   decoration: const InputDecoration(
                     labelText: 'Gender',

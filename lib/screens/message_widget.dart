@@ -17,16 +17,16 @@ class MessageWidget extends StatelessWidget {
       children: [
         Flexible(
           child: Container(
-            padding: EdgeInsets.symmetric(
+            padding: const EdgeInsets.symmetric(
               vertical: 15,
               horizontal: 20,
             ),
-            margin: EdgeInsets.only(bottom: 8),
+            margin: const EdgeInsets.only(bottom: 8),
             constraints: const BoxConstraints( maxWidth: 520),
             decoration: BoxDecoration(
               color: isFromUser
-              ? Color(0xFFead2c6)
-              :Color(0xFF44544b),
+              ? const Color(0xFFead2c6)
+              :const Color(0xFF44544b),
               borderRadius: BorderRadius.circular(15),
             ),
             child: Column(

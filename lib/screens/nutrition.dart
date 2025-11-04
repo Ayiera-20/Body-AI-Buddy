@@ -14,7 +14,7 @@ class _NutritionState extends State<Nutrition> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text('Nutrition Plan'),
+        title: const Text('Nutrition Plan'),
         backgroundColor: const Color(0xFFead2c6),
         leading: IconButton(onPressed: () {
           Navigator.pop(context);
@@ -25,11 +25,11 @@ class _NutritionState extends State<Nutrition> {
       body: Padding(padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Column(
         children: [
-          SizedBox(height: 20,),
-          Text('Select your desired goal', style: TextStyle(
+          const SizedBox(height: 20,),
+          const Text('Select your desired goal', style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 20 ),),
-          SizedBox(height: 20,),
+          const SizedBox(height: 20,),
           Expanded(
             child: ListView(
             children: [
@@ -40,11 +40,11 @@ class _NutritionState extends State<Nutrition> {
             ],
           )
           ),
-          Text('Input your own peronalized goal',
+          const Text('Input your own peronalized goal',
           style: TextStyle(fontSize: 20,
           fontWeight: FontWeight.bold),
           textAlign: TextAlign.left,),
-          SizedBox(height: 10,),
+          const SizedBox(height: 10,),
           TextFormField(
                   decoration: InputDecoration(
                     filled: true,
@@ -76,7 +76,7 @@ class _NutritionState extends State<Nutrition> {
                     ),
                     child: const Text('Generate', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18),),
                 ),
-                SizedBox(height: 10,)
+                const SizedBox(height: 10,)
           
         ],
       ),)
@@ -85,10 +85,10 @@ class _NutritionState extends State<Nutrition> {
   Widget _buildCard(String title){
     return Card(
       elevation: 5,
-      margin: EdgeInsets.all(10),
+      margin: const EdgeInsets.all(10),
       child: ListTile(
         title: Text(title),
-        leading: Icon(Icons.arrow_forward_outlined),
+        leading: const Icon(Icons.arrow_forward_outlined),
       ),
     );
   }

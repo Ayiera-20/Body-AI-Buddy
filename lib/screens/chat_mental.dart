@@ -27,10 +27,11 @@ final ScrollController _scrollController = ScrollController();
       );
       _chatSession = _model.startChat();
   }
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Mental Health check in'),
+        title: const Text('Mental Health check in'),
         backgroundColor: const Color(0xFFead2c6),
         leading: IconButton(onPressed: () {
           Navigator.pop(context);
@@ -38,7 +39,7 @@ final ScrollController _scrollController = ScrollController();
         icon: const Icon(Icons.arrow_back_ios), color: const Color(0xFF44544b),
         ),
       ),
-      body:Padding(padding: EdgeInsets.all(30),
+      body:Padding(padding: const EdgeInsets.all(30),
       child: Column(
         children: [
           Expanded(
@@ -57,7 +58,7 @@ final ScrollController _scrollController = ScrollController();
               }
             ), 
             ),
-            Padding(padding: EdgeInsetsDirectional.symmetric(
+            Padding(padding: const EdgeInsetsDirectional.symmetric(
               vertical: 25,
               horizontal: 15,
               ),
@@ -71,7 +72,7 @@ final ScrollController _scrollController = ScrollController();
                       controller: _textController,
                       onSubmitted: _sendChatMessage,
                     ) ),
-                    SizedBox(height: 15,),
+                    const SizedBox(height: 15,),
                     if (!_loading)
                       IconButton(
                           onPressed: () async {
@@ -94,7 +95,7 @@ final ScrollController _scrollController = ScrollController();
     );
   }
   InputDecoration textFiedlDecoration() {
-    return InputDecoration(
+    return const InputDecoration(
       contentPadding: EdgeInsets.all(15),
       hintText: 'Enter prompt..',
       border: OutlineInputBorder(
@@ -153,7 +154,7 @@ final ScrollController _scrollController = ScrollController();
     WidgetsBinding.instance.addPostFrameCallback(
     (_) => _scrollController.animateTo(
       _scrollController.position.maxScrollExtent,
-      duration: Duration(
+      duration: const Duration(
         milliseconds: 750,
       ),
       curve: Curves.easeOutCirc,
@@ -166,7 +167,7 @@ final ScrollController _scrollController = ScrollController();
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text('Something went wrong'),
+          title: const Text('Something went wrong'),
           content: SingleChildScrollView(
             child: SelectableText(message),
           ),
@@ -174,7 +175,7 @@ final ScrollController _scrollController = ScrollController();
             TextButton(onPressed: () {
               Navigator.of(context).pop();
             },
-            child: Text('OK'))
+            child: const Text('OK'))
           ],
         );
       });
