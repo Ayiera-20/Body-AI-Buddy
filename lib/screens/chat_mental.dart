@@ -29,14 +29,23 @@ final ScrollController _scrollController = ScrollController();
   }
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Mental Health check in'),
-        backgroundColor: const Color(0xFFead2c6),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        centerTitle: true,
+        title: Text(
+          'Mental Health check in',
+          style: theme.textTheme.headlineMedium?.copyWith(
+            fontWeight: FontWeight.bold,
+            color: theme.colorScheme.primary,
+          ),
+        ),
         leading: IconButton(onPressed: () {
           Navigator.pop(context);
         },
-        icon: const Icon(Icons.arrow_back_ios), color: const Color(0xFF44544b),
+        icon: Icon(Icons.arrow_back_ios, color: theme.colorScheme.primary),
         ),
       ),
       body:Padding(padding: const EdgeInsets.all(30),

@@ -28,15 +28,24 @@ class _SymptomCheckState extends State<SymptomCheck> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text('Symptoms Checker'),
-        backgroundColor: const Color(0xFFead2c6),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        centerTitle: true,
+        title: Text(
+          'Symptoms Checker',
+          style: theme.textTheme.headlineMedium?.copyWith(
+            fontWeight: FontWeight.bold,
+            color: theme.colorScheme.primary,
+          ),
+        ),
         leading: IconButton(onPressed: () {
           Navigator.pop(context);
         },
-        icon: const Icon(Icons.arrow_back_ios), color: const Color(0xFF44544b),
+        icon: Icon(Icons.arrow_back_ios, color: theme.colorScheme.primary),
         ),
       ),
       body: SingleChildScrollView(
@@ -131,9 +140,10 @@ class _SymptomCheckState extends State<SymptomCheck> {
                   child: ElevatedButton(
                     onPressed: () => _selectDate(context),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFF44544b), 
+                      backgroundColor: Theme.of(context).colorScheme.primary,
+                      foregroundColor: Colors.white,
                     ),
-                    child: const Text('Pick Date', style: TextStyle(color: Colors.white),),
+                    child: const Text('Pick Date', style: TextStyle(color: Colors.white)),
                   ),
                   )
                   
@@ -318,20 +328,28 @@ class _SymptomCheckState extends State<SymptomCheck> {
                                   ),),
           const SizedBox(height: 20,),
           ElevatedButton(
-                    onPressed: () {
-                      // Navigator.of(context).push(MaterialPageRoute(
-                      //   builder: (context) => const Home() ));
-                      // ();
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFF44544b),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                      ),
-                      minimumSize: const Size(200, 50),
-                    ),
-                    child: const Text('Submit', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18),),
-                ),
+            onPressed: () {
+              // Navigator.of(context).push(MaterialPageRoute(
+              //   builder: (context) => const Home() ));
+              // ();
+            },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Theme.of(context).colorScheme.primary,
+              foregroundColor: Colors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20.0),
+              ),
+              minimumSize: const Size(200, 50),
+            ),
+            child: const Text(
+              'Submit',
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+              ),
+            ),
+          ),
         ],
       ),
       ),

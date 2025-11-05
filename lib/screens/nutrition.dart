@@ -11,15 +11,24 @@ class _NutritionState extends State<Nutrition> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text('Nutrition Plan'),
-        backgroundColor: const Color(0xFFead2c6),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        centerTitle: true,
+        title: Text(
+          'Nutrition Plan',
+          style: theme.textTheme.headlineMedium?.copyWith(
+            fontWeight: FontWeight.bold,
+            color: theme.colorScheme.primary,
+          ),
+        ),
         leading: IconButton(onPressed: () {
           Navigator.pop(context);
         },
-        icon: const Icon(Icons.arrow_back_ios), color: const Color(0xFF44544b),
+        icon: Icon(Icons.arrow_back_ios, color: theme.colorScheme.primary),
         ),
       ),
       body: Padding(padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -62,19 +71,27 @@ class _NutritionState extends State<Nutrition> {
                 ),
           const SizedBox(height: 30,),
                 ElevatedButton(
-                    onPressed: () {
-                      // Navigator.of(context).push(MaterialPageRoute(
-                      //   builder: (context) => const Home() ));
-                      // ();
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFF44544b),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50.0),
-                      ),
-                      minimumSize: const Size(200, 60),
+                  onPressed: () {
+                    // Navigator.of(context).push(MaterialPageRoute(
+                    //   builder: (context) => const Home() ));
+                    // ();
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Theme.of(context).colorScheme.primary,
+                    foregroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50.0),
                     ),
-                    child: const Text('Generate', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18),),
+                    minimumSize: const Size(200, 60),
+                  ),
+                  child: const Text(
+                    'Generate',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                    ),
+                  ),
                 ),
                 const SizedBox(height: 10,)
           
