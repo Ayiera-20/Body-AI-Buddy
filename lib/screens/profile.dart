@@ -220,9 +220,24 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
 
   Widget _buildStatsCards(ThemeData theme) {
     final stats = [
-      {'icon': Icons.favorite, 'value': '128', 'label': 'Heart Rate', 'color': Colors.red},
-      {'icon': Icons.local_fire_department, 'value': '2,340', 'label': 'Calories', 'color': Colors.orange},
-      {'icon': Icons.directions_walk, 'value': '8,432', 'label': 'Steps', 'color': Colors.blue},
+      {
+        'icon': Icons.favorite,
+        'value': '128',
+        'label': 'Heart Rate',
+        'color': Colors.red
+      },
+      {
+        'icon': Icons.local_fire_department,
+        'value': '2,340',
+        'label': 'Calories',
+        'color': Colors.orange
+      },
+      {
+        'icon': Icons.directions_walk,
+        'value': '8,432',
+        'label': 'Steps',
+        'color': Colors.blue
+      },
     ];
 
     return Row(
