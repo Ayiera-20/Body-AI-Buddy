@@ -31,100 +31,233 @@ final ScrollController _scrollController = ScrollController();
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Scaffold(
+      backgroundColor: Colors.grey[50],
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: theme.colorScheme.primary,
         elevation: 0,
         centerTitle: true,
         title: Text(
-          'Mental Health check in',
-          style: theme.textTheme.headlineMedium?.copyWith(
+          'Mental Health Chat',
+          style: theme.textTheme.headlineSmall?.copyWith(
             fontWeight: FontWeight.bold,
-            color: theme.colorScheme.primary,
+            color: Colors.white,
           ),
         ),
-        leading: IconButton(onPressed: () {
-          Navigator.pop(context);
-        },
-        icon: Icon(Icons.arrow_back_ios, color: theme.colorScheme.primary),
+        leading: IconButton(
+          onPressed: () => Navigator.pop(context),
+          icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
         ),
-      ),
-      body:Padding(padding: const EdgeInsets.all(30),
-      child: Column(
-        children: [
-          Expanded(
-            child: ListView.builder(
-              controller: _scrollController,
-              itemCount: _chatSession.history.length,
-              itemBuilder: (context, index) {
-                final Content content = _chatSession.history.toList()[index];
-                final text = 
-                content.parts.whereType<TextPart>().map<String>((e) => e.text).join('');
-
-                return MessageWidget(
-                  text: text, 
-                  isFromUser: content.role == 'user'
-                  );
-              }
-            ), 
-            ),
-            Padding(padding: const EdgeInsetsDirectional.symmetric(
-              vertical: 25,
-              horizontal: 15,
-              ),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: TextField(
-                      autofocus: true,
-                      focusNode: _textFieldFocus,
-                      decoration: textFiedlDecoration(),
-                      controller: _textController,
-                      onSubmitted: _sendChatMessage,
-                    ) ),
-                    const SizedBox(height: 15,),
-                    if (!_loading)
-                      IconButton(
-                          onPressed: () async {
-                              _sendChatMessage(_textController.text);
-                          },
-                          icon: Icon(
-                              Icons.send,
-                              color: Theme.of(context).colorScheme.primary,
-                          ),
-                      )
-                  else
-                      const CircularProgressIndicator(),
-                ],
-              ),
-
-              )
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.info_outline, color: Colors.white),
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (context) => AlertDialog(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  title: Row(
+                    children: [
+                      Icon(Icons.psychology, color: theme.colorScheme.primary),
+                      const SizedBox(width: 8),
+                      const Text('AI Mental Health Assistant'),
+                    ],
+                  ),
+                  content: const Text(
+                    'I\'m here to support your mental wellness journey. Feel free to share how you\'re feeling, ask questions, or discuss any concerns.',
+                  ),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.pop(context),
+                      child: const Text('Got it'),
+                    ),
+                  ],
+                ),
+              );
+            },
+          ),
         ],
       ),
+      body: Column(
+        children: [
+          if (_chatSession.history.isEmpty)
+            Expanded(
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(24),
+                      decoration: BoxDecoration(
+                        color: theme.colorScheme.primary.withOpacity(0.1),
+                        shape: BoxShape.circle,
+                      ),
+                      child: Icon(
+                        Icons.psychology,
+                        size: 64,
+                        color: theme.colorScheme.primary,
+                      ),
+                    ),
+                    const SizedBox(height: 24),
+                    Text(
+                      'How are you feeling today?',
+                      style: theme.textTheme.headlineSmall?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: theme.colorScheme.primary,
+                      ),
+                    ),
+                    const SizedBox(height: 12),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 48),
+                      child: Text(
+                        'Share your thoughts and feelings. I\'m here to listen and support you.',
+                        style: theme.textTheme.bodyMedium?.copyWith(
+                          color: Colors.grey[600],
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            )
+          else
+            Expanded(
+              child: ListView.builder(
+                controller: _scrollController,
+                padding: const EdgeInsets.all(16),
+                itemCount: _chatSession.history.length,
+                itemBuilder: (context, index) {
+                  final Content content = _chatSession.history.toList()[index];
+                  final text = content.parts
+                      .whereType<TextPart>()
+                      .map<String>((e) => e.text)
+                      .join('');
+
+                  return MessageWidget(
+                    text: text,
+                    isFromUser: content.role == 'user',
+                  );
+                },
+              ),
+            ),
+          if (_loading)
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: Row(
+                children: [
+                  Container(
+                    padding: const EdgeInsets.all(12),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(12),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.05),
+                          blurRadius: 8,
+                          offset: const Offset(0, 2),
+                        ),
+                      ],
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        SizedBox(
+                          width: 16,
+                          height: 16,
+                          child: CircularProgressIndicator(
+                            strokeWidth: 2,
+                            valueColor: AlwaysStoppedAnimation<Color>(
+                              theme.colorScheme.primary,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 12),
+                        Text(
+                          'Thinking...',
+                          style: TextStyle(color: Colors.grey[600]),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.05),
+                  blurRadius: 8,
+                  offset: const Offset(0, -2),
+                ),
+              ],
+            ),
+            child: SafeArea(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 12,
+                ),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.grey[100],
+                          borderRadius: BorderRadius.circular(24),
+                          border: Border.all(
+                            color: Colors.grey[300]!,
+                          ),
+                        ),
+                        child: TextField(
+                          focusNode: _textFieldFocus,
+                          decoration: InputDecoration(
+                            contentPadding: const EdgeInsets.symmetric(
+                              horizontal: 20,
+                              vertical: 12,
+                            ),
+                            hintText: 'Type your message...',
+                            hintStyle: TextStyle(color: Colors.grey[400]),
+                            border: InputBorder.none,
+                          ),
+                          controller: _textController,
+                          onSubmitted: _loading ? null : _sendChatMessage,
+                          maxLines: null,
+                          textCapitalization: TextCapitalization.sentences,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 8),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: _loading
+                            ? Colors.grey[300]
+                            : theme.colorScheme.primary,
+                        shape: BoxShape.circle,
+                      ),
+                      child: IconButton(
+                        onPressed: _loading || _textController.text.trim().isEmpty
+                            ? null
+                            : () => _sendChatMessage(_textController.text),
+                        icon: const Icon(
+                          Icons.send,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
-  InputDecoration textFiedlDecoration() {
-    return const InputDecoration(
-      contentPadding: EdgeInsets.all(15),
-      hintText: 'Enter prompt..',
-      border: OutlineInputBorder(
-        borderRadius: BorderRadius.all(
-          Radius.circular(15),
-        ),
-        borderSide: BorderSide(
-          color: Color(0xFF4d302a),
-        ),
-      ),
-      focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.all(
-          Radius.circular(15),
-        ),
-        borderSide: BorderSide(
-          color: Color(0xFF4d302a),
-        ),
-      )
-    );
-  }
+
 
   Future<void> _sendChatMessage(String message) async {
     setState(() {
@@ -176,18 +309,34 @@ final ScrollController _scrollController = ScrollController();
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: const Text('Something went wrong'),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+          title: Row(
+            children: [
+              Icon(Icons.error_outline, color: Colors.red),
+              const SizedBox(width: 8),
+              const Text('Something went wrong'),
+            ],
+          ),
           content: SingleChildScrollView(
             child: SelectableText(message),
           ),
           actions: [
-            TextButton(onPressed: () {
-              Navigator.of(context).pop();
-            },
-            child: const Text('OK'))
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: Text(
+                'OK',
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.primary,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
           ],
         );
-      });
+      },
+    );
   }
 }
 
