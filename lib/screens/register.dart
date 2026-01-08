@@ -272,7 +272,8 @@ class _RegisterState extends State<Register> with TickerProviderStateMixin {
           decoration: InputDecoration(
             hintText: hint,
             hintStyle: TextStyle(color: Colors.grey[400]),
-            prefixIcon: Icon(icon, color: Theme.of(context).colorScheme.primary),
+            prefixIcon:
+                Icon(icon, color: Theme.of(context).colorScheme.primary),
             filled: true,
             fillColor: Colors.grey[100],
             border: OutlineInputBorder(
@@ -331,7 +332,9 @@ class _RegisterState extends State<Register> with TickerProviderStateMixin {
             ),
             suffixIcon: IconButton(
               icon: Icon(
-                _obscurePassword ? Icons.visibility_outlined : Icons.visibility_off_outlined,
+                _obscurePassword
+                    ? Icons.visibility_outlined
+                    : Icons.visibility_off_outlined,
                 color: Colors.grey[600],
               ),
               onPressed: () {

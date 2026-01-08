@@ -10,23 +10,23 @@ class ChatMental extends StatefulWidget {
 }
 
 class _ChatMentalState extends State<ChatMental> {
-late final GenerativeModel _model;
-late final ChatSession _chatSession;
-final FocusNode _textFieldFocus = FocusNode();
-final TextEditingController _textController = TextEditingController();
-final ScrollController _scrollController = ScrollController();
+  late final GenerativeModel _model;
+  late final ChatSession _chatSession;
+  final FocusNode _textFieldFocus = FocusNode();
+  final TextEditingController _textController = TextEditingController();
+  final ScrollController _scrollController = ScrollController();
   bool _loading = false;
 
   @override
   void initState() {
     super.initState();
     _model = GenerativeModel(
-      model: 'gemini-pro', 
-      apiKey: const String.fromEnvironment('API_KEY')
-      // apiKey: dotenv.env['API_KEY'] ?? '',
-      );
-      _chatSession = _model.startChat();
+        model: 'gemini-pro', apiKey: const String.fromEnvironment('API_KEY')
+        // apiKey: dotenv.env['API_KEY'] ?? '',
+        );
+    _chatSession = _model.startChat();
   }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -239,9 +239,10 @@ final ScrollController _scrollController = ScrollController();
                         shape: BoxShape.circle,
                       ),
                       child: IconButton(
-                        onPressed: _loading || _textController.text.trim().isEmpty
-                            ? null
-                            : () => _sendChatMessage(_textController.text),
+                        onPressed:
+                            _loading || _textController.text.trim().isEmpty
+                                ? null
+                                : () => _sendChatMessage(_textController.text),
                         icon: const Icon(
                           Icons.send,
                           color: Colors.white,
@@ -257,7 +258,6 @@ final ScrollController _scrollController = ScrollController();
       ),
     );
   }
-
 
   Future<void> _sendChatMessage(String message) async {
     setState(() {
@@ -294,13 +294,13 @@ final ScrollController _scrollController = ScrollController();
 
   void _scrollDown() {
     WidgetsBinding.instance.addPostFrameCallback(
-    (_) => _scrollController.animateTo(
-      _scrollController.position.maxScrollExtent,
-      duration: const Duration(
-        milliseconds: 750,
+      (_) => _scrollController.animateTo(
+        _scrollController.position.maxScrollExtent,
+        duration: const Duration(
+          milliseconds: 750,
+        ),
+        curve: Curves.easeOutCirc,
       ),
-      curve: Curves.easeOutCirc,
-    ),
     );
   }
 
@@ -339,6 +339,3 @@ final ScrollController _scrollController = ScrollController();
     );
   }
 }
-
-
-  

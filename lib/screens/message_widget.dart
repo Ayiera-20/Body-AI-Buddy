@@ -44,16 +44,12 @@ class MessageWidget extends StatelessWidget {
                 horizontal: 16,
               ),
               decoration: BoxDecoration(
-                color: isFromUser
-                    ? theme.colorScheme.primary
-                    : Colors.white,
+                color: isFromUser ? theme.colorScheme.primary : Colors.white,
                 borderRadius: BorderRadius.only(
                   topLeft: const Radius.circular(16),
                   topRight: const Radius.circular(16),
-                  bottomLeft:
-                      Radius.circular(isFromUser ? 16 : 4),
-                  bottomRight:
-                      Radius.circular(isFromUser ? 4 : 16),
+                  bottomLeft: Radius.circular(isFromUser ? 16 : 4),
+                  bottomRight: Radius.circular(isFromUser ? 4 : 16),
                 ),
                 boxShadow: [
                   BoxShadow(
